@@ -1,0 +1,42 @@
+name: Collect procurement notices
+
+on:
+  schedule:
+    # 매주 월요일 09:00 UTC (한국시간 18:00) 자동 실행
+    - cron: "0 9 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run collector
+        # collect.py는 기관 접속 실패 또는 2회 연속 0건 수집 시 0이 아닌 코드로 종료한다.
+        # 이 스텝이 실패하면 GitHub Actions가 잡을 실패로 표시하고 계정 소유자에게
+        # 알림을 보낸다 (§4-3 조용한 실패 금지).
+        run: python collect.py
+
+      - name: Commit and push changes
+        # 위 스텝이 실패했더라도(예: OCTA만 실패) MTA Flint 등 성공한 수집 결과는
+        # 유실하지 않고 커밋한다.
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ raw/
+          git diff --cached --quiet || git commit -m "chore: update notices ($(date -u +%Y-%m-%d))"
+          git push
