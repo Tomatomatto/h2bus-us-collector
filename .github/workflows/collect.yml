@@ -25,9 +25,21 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run collector
-        # collect.py는 기관 접속 실패 또는 2회 연속 0건 수집 시 0이 아닌 코드로 종료한다.
-        # 이 스텝이 실패하면 GitHub Actions가 잡을 실패로 표시하고 계정 소유자에게
-        # 알림을 보낸다 (§4-3 조용한 실패 금지).
+        # collect.py는 기관 접속 실패, 2회 연속 0건 수집, 또는 신규 수소버스 공고
+        # 이메일 발송 실패 시 0이 아닌 코드로 종료한다. 이 스텝이 실패하면 GitHub
+        # Actions가 잡을 실패로 표시하고 계정 소유자에게 알림을 보낸다 (§4-3).
+        #
+        # 신규 수소버스 공고(연료=수소 AND 품목구분=버스) 발견 시 별도로 지정된
+        # 수신자에게 이메일을 보낸다 (collectors/notify.py). 아래 시크릿을
+        # 저장소 Settings -> Secrets and variables -> Actions 에 등록해야 한다.
+        # 시크릿이 없어도 신규 수소버스 공고가 없는 평소 실행에는 영향 없다.
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
         run: python collect.py
 
       - name: Commit and push changes

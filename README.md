@@ -87,3 +87,35 @@ GitHub Actions 자동 실행이 조용히 멈춘다. 사내 조직 계정 승인
 ## 8. 원문 보존
 
 매 실행 시 가져온 원본 HTML을 `raw/{기관}/{날짜}.html`에 보존한다 (파싱 오류 검증용).
+
+## 9. 신규 수소버스 공고 이메일 알림
+
+자동수집 결과 중 **새로 발견된 건**(기존 `notices.csv`에 없던 건)이면서 **연료='수소' AND
+품목구분='버스'** 인 경우에만 지정된 수신자에게 이메일을 보낸다 (`collectors/notify.py`).
+이미 알고 있던 공고가 마감일만 갱신되는 경우 등은 알림 대상이 아니다.
+
+GitHub Actions는 이메일 발송 기능이 내장되어 있지 않으므로, 표준 SMTP(`smtplib`, 사내
+CV News Clipping 프로젝트의 이식 가능한 발송 방식과 동일 계열)로 직접 보낸다. Outlook COM
+자동화 방식은 클라우드 러너에 Outlook이 없어 사용할 수 없다.
+
+### 설정 방법 (최초 1회)
+
+저장소 **Settings → Secrets and variables → Actions → New repository secret** 에서 아래
+6개를 등록한다. **절대 코드나 이 README에 실제 값을 적지 않는다.**
+
+| 시크릿 이름 | 내용 | 예시 |
+|---|---|---|
+| `SMTP_HOST` | SMTP 서버 주소 | Gmail: `smtp.gmail.com` |
+| `SMTP_PORT` | SMTP 포트 (SSL) | Gmail: `465` |
+| `SMTP_USERNAME` | 로그인 계정 | `sender@gmail.com` |
+| `SMTP_PASSWORD` | 비밀번호 (Gmail은 일반 비밀번호가 아닌 **앱 비밀번호** 필요) | - |
+| `FROM_EMAIL` | 발신 표시 주소 (보통 `SMTP_USERNAME`과 동일) | `sender@gmail.com` |
+| `TO_EMAIL` | 수신자 이메일 주소 | `recipient@example.com` |
+
+Gmail을 쓸 경우: Google 계정 → 보안 → 2단계 인증 활성화 → **앱 비밀번호** 생성 → 그 16자리
+값을 `SMTP_PASSWORD`에 등록한다 (일반 로그인 비밀번호는 동작하지 않는다).
+
+시크릿을 등록하지 않은 상태에서도 신규 수소버스 공고가 없는 평소 실행은 그대로 정상
+동작한다 — 알림 대상이 있을 때만 환경변수를 읽으므로, 미설정 상태로 방치해도 기존
+수집 기능에는 영향이 없다. 다만 신규 수소버스 공고가 실제로 발견됐는데 시크릿 미설정
+등으로 발송에 실패하면, 그 실패도 Actions 잡 실패로 표시된다(조용히 놓치지 않는다).

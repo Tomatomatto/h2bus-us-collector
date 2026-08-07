@@ -158,6 +158,21 @@ def merge_notices(existing_rows, new_rows, today=None):
     return merged
 
 
+def find_new_hydrogen_bus_rows(existing_rows, new_rows):
+    """이번 실행에서 새로 발견된(기존 CSV에 없던) 수소버스 공고만 골라낸다.
+
+    판정 기준(엄격): 연료='수소' AND 품목구분='버스'. 이메일 알림 트리거용.
+    """
+    existing_keys = {_key(r) for r in existing_rows}
+    result = []
+    for row in new_rows:
+        if _key(row) in existing_keys:
+            continue
+        if row.get("연료") == "수소" and row.get("품목구분") == "버스":
+            result.append(row)
+    return result
+
+
 # ---------------------------------------------------------------------------
 # 판별 규칙 (§3-3)
 # ---------------------------------------------------------------------------

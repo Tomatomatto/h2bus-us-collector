@@ -228,3 +228,34 @@ def test_check_consecutive_zero_ignores_other_institution():
         common.make_run_log_entry("OCTA", "성공", 0, "", when="2026-08-08 00:00:00"),
     ]
     assert common.check_consecutive_zero(rows, "MTA Flint", n=2) is False
+
+
+# ---------------------------------------------------------------------------
+# 신규 수소버스 공고 감지 (이메일 알림 트리거)
+# ---------------------------------------------------------------------------
+
+def test_find_new_hydrogen_bus_rows_detects_new_match():
+    existing = []
+    new = [_row(기관="MTA Flint", 공고번호="A", 품목구분="버스", 연료="수소")]
+    found = common.find_new_hydrogen_bus_rows(existing, new)
+    assert len(found) == 1
+    assert found[0]["공고번호"] == "A"
+
+
+def test_find_new_hydrogen_bus_rows_ignores_already_known():
+    existing = [_row(기관="MTA Flint", 공고번호="A", 품목구분="버스", 연료="수소")]
+    new = [_row(기관="MTA Flint", 공고번호="A", 품목구분="버스", 연료="수소")]
+    assert common.find_new_hydrogen_bus_rows(existing, new) == []
+
+
+def test_find_new_hydrogen_bus_rows_requires_both_fuel_and_item_type():
+    existing = []
+    new = [
+        _row(기관="MTA Flint", 공고번호="B", 품목구분="부품", 연료="수소"),  # 버스 아님
+        _row(기관="MTA Flint", 공고번호="C", 품목구분="버스", 연료="불명"),  # 수소 아님
+    ]
+    assert common.find_new_hydrogen_bus_rows(existing, new) == []
+
+
+def test_find_new_hydrogen_bus_rows_empty_when_no_new_rows():
+    assert common.find_new_hydrogen_bus_rows([], []) == []

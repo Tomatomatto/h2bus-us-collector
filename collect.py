@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from collectors import common, mta_flint  # noqa: E402
+from collectors import common, mta_flint, notify  # noqa: E402
 
 NOTICES_CSV = ROOT / "data" / "notices.csv"
 RUN_LOG_CSV = ROOT / "data" / "run_log.csv"
@@ -56,11 +56,21 @@ def main():
         print(f"[{institution}] 수집 {len(rows)}건")
         new_rows.extend(rows)
 
+    new_hydrogen_bus_rows = common.find_new_hydrogen_bus_rows(existing_rows, new_rows)
+
     merged = common.merge_notices(existing_rows, new_rows, today)
     common.save_notices(NOTICES_CSV, merged)
 
     for entry in run_log_entries:
         common.append_run_log(RUN_LOG_CSV, entry)
+
+    if new_hydrogen_bus_rows:
+        print(f"[알림] 신규 수소버스 공고 {len(new_hydrogen_bus_rows)}건 발견 -- 이메일 발송 시도")
+        try:
+            notify.send_new_hydrogen_bus_alert(new_hydrogen_bus_rows)
+        except Exception as exc:  # noqa: BLE001 - 발송 실패도 눈에 보이게 만든다
+            any_failed = True
+            print(f"[알림] 이메일 발송 실패: {type(exc).__name__}: {exc}", file=sys.stderr)
 
     run_log_all = common.load_run_log(RUN_LOG_CSV)
     silent_failure = False
