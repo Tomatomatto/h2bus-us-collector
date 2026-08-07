@@ -15,12 +15,19 @@ https://raw.githubusercontent.com/Tomatomatto/h2bus-us-collector/main/data/notic
 엑셀에서: 데이터 탭 → 데이터 가져오기 → 웹에서 → 위 주소 붙여넣기 → 연결.
 매 실행마다 이 파일이 갱신되므로, 엑셀에서 "새로고침"만 누르면 최신 공고를 받아볼 수 있다.
 
-## 2. 수집 대상 (2곳)
+## 2. 수집 대상 (1곳, 최종 확정)
 
 | 기관 | 주소 | 상태 |
 |---|---|---|
 | MTA Flint | https://www.mtaflint.org/purchasing | 정상 수집 중 |
-| OCTA | https://cammnet.octa.net/procurements | 로컬 진단에서 접속 타임아웃(사내망 요인 가능성) — GitHub Actions 첫 실행 결과로 최종 확정 예정. 접속에 계속 실패하면 `collect.py`의 `COLLECTORS` 목록에서 제외한다 |
+
+**OCTA는 자동 수집 대상에서 제외됐다.** 로컬 사내망에서는 타임아웃이었으나(§2 진단,
+`OCTA_DIAGNOSIS.md`), 2026-08-07 GitHub Actions 실행으로 사내망 문제가 아니었음이
+확인됐다. 다만 `cammnet.octa.net`의 예전 공고 목록 페이지에는 더 이상 공고 링크가
+없고, 안내에 따라 이동한 신규 조달 시스템(`procurement.opengov.com/portal/octa`)은
+Cloudflare 봇 차단으로 자동 접근 자체가 불가능하다(403). 패치오더 §2 판정표의
+"403/봇 차단 → 수집 대상 제외" 케이스로, 수기 확인 대상으로 전환했다
+(`collectors/octa.py`는 조사 기록으로 남겨두되 `collect.py`에서는 호출하지 않는다).
 
 ## 3. 실행 주기 · 수동 실행
 
@@ -35,7 +42,7 @@ https://raw.githubusercontent.com/Tomatomatto/h2bus-us-collector/main/data/notic
 | # | 열 이름 | 내용 | 없을 때 |
 |---|---|---|---|
 | 1 | 확인일 | 최초 수집 실행일 (YYYY-MM-DD) | 필수 |
-| 2 | 기관 | `MTA Flint` 또는 `OCTA` | 필수 |
+| 2 | 기관 | `MTA Flint` | 필수 |
 | 3 | 공고번호 | 원문의 공고 번호 | 없으면 제목 앞 40자 |
 | 4 | 제목 | 공고 제목 원문 | 필수 |
 | 5 | 품목구분 | 버스 / 부품 / 충전인프라 / 용역 / 기타 | 기타 |
@@ -58,12 +65,12 @@ https://raw.githubusercontent.com/Tomatomatto/h2bus-us-collector/main/data/notic
 갱신하고, 확인일과 다른 정보는 최초 수집 시점 값을 유지한다. 마감일이 지난 "진행" 건은
 자동으로 "마감"으로 바뀐다.
 
-## 5. 자동 수집이 2곳뿐인 이유
+## 5. 자동 수집이 1곳뿐인 이유
 
-미국 측 조사 대상 기관 중 이 2곳만 로그인 없이, robots.txt를 우회하지 않고, 브라우저
-자동화 없이 정적 HTML로 접근 가능한 상시 공고 목록을 제공한다. 나머지 9곳은 조달 시스템이
-자동 접근을 막거나(로그인 필요, 봇 차단) 상시 공고 목록 페이지 자체가 없어 담당자가 수기로
-확인해야 한다.
+미국 측 조사 대상 기관 중 MTA Flint만 로그인 없이, robots.txt를 우회하지 않고, 브라우저
+자동화 없이 정적 HTML로 접근 가능한 상시 공고 목록을 제공한다. OCTA를 포함한 나머지
+10곳은 조달 시스템이 자동 접근을 막거나(로그인 필요, 봇 차단) 상시 공고 목록 페이지
+자체가 없어 담당자가 수기로 확인해야 한다.
 
 ## 6. 개인 계정 운영 유의
 

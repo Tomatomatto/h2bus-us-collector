@@ -17,14 +17,19 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from collectors import common, mta_flint, octa  # noqa: E402
+from collectors import common, mta_flint  # noqa: E402
 
 NOTICES_CSV = ROOT / "data" / "notices.csv"
 RUN_LOG_CSV = ROOT / "data" / "run_log.csv"
 
+# OCTA는 2026-08-07 GitHub Actions 실행으로 최종 제외 확정 (collectors/octa.py, OCTA_DIAGNOSIS.md 참고):
+#   - 사내망 타임아웃이 원인이 아니었음 -- 클라우드(GH Actions)에서는 정상 접속됨
+#   - 그러나 예전 CAMMNET 목록 페이지에는 공고 링크가 더 이상 없고, 안내에 따라 이동한
+#     새 조달 시스템(procurement.opengov.com/portal/octa)은 Cloudflare 봇 차단으로
+#     자동 접근 자체가 불가능함 (403 / "Sorry, you have been blocked")
+#   -> 패치오더 §2 판정표의 "403/봇 차단 → 수집 대상 제외" 케이스. 수기 확인 대상으로 전환.
 COLLECTORS = [
     ("MTA Flint", mta_flint.run),
-    ("OCTA", octa.run),
 ]
 
 

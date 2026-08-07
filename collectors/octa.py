@@ -17,6 +17,15 @@ collect.py가 run_log.csv에 상태 코드/오류 메시지를 기록하고 Acti
 한 최소 추정만 수행한다. 접속에 성공했는데 이 패턴의 링크가 전혀 없다면
 0건으로 보고한다(가짜 데이터를 만들지 않는다) — 조용한 실패 방지는
 common.check_consecutive_zero()가 2회 연속 0건일 때 처리한다.
+
+[2026-08-07 최종 판정 -- 수집 대상에서 제외됨]
+GitHub Actions에서 실행한 결과 `cammnet.octa.net`은 정상 접속됐다(사내망 문제였음이
+확인됨). 그러나 실제 페이지에는 `landing/Default.aspx?id=` 패턴의 공고 링크가 전혀
+없었고, 대신 페이지 안내에 따라 이동한 신규 조달 시스템
+`https://procurement.opengov.com/portal/octa` 은 Cloudflare 봇 차단으로 자동
+접근이 아예 불가능했다(403 / "Sorry, you have been blocked"). 패치오더 §2
+판정표의 "403/봇 차단 → 수집 대상 제외" 케이스에 해당하여, collect.py의
+COLLECTORS 목록에서 제외했다. 이 파일은 향후 참고용으로 남겨둔다.
 """
 import re
 

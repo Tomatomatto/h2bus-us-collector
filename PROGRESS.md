@@ -14,6 +14,7 @@ Updated: 2026-08-06 00:00
 | W-09 | GitHub Actions 워크플로 | DONE | 2026-08-06 01:35 | 2026-08-06 01:40 | .github/workflows/collect.yml — 주1회(월 09:00 UTC) + workflow_dispatch, collect.py 실패시 스텝 실패→잡 실패(알림), 성공분은 always()로 커밋·푸시 |
 | W-10 | README.md | DONE | 2026-08-06 01:40 | 2026-08-06 01:50 | README 6항목 작성(엑셀주소/대상기관/주기/15열정의/2곳뿐인이유/개인계정유의). 엑셀 연결주소는 GitHub 계정·저장소명 미확정으로 TODO 플레이스홀더 — 미해결 항목으로 보고 |
 | W-11 | 실행 1회 · CSV 생성 확인 · 엑셀 연결 주소 검증 | DONE | 2026-08-06 01:50 | 2026-08-06 02:10 | collect.py 1회 실행 → notices.csv 6건(15열·UTF-8 BOM 정확), run_log.csv 누적 기록(성공/실패 각각 정확한 예외 메시지 원문 보존), raw/MTA Flint/2026-08-06.html 보존 확인. OCTA는 실 네트워크로 재시도했고 여전히 타임아웃(§2 판정과 일치) → 실패로 기록되고 종료코드 1. 엑셀 연결주소는 GitHub 저장소 미생성으로 실주소 검증 불가 — 미해결 |
+| W-12 | GitHub 저장소 연결 · OCTA 최종 판정 | DONE | 2026-08-07 09:40 | 2026-08-07 09:50 | 저장소 https://github.com/Tomatomatto/h2bus-us-collector 로 push(main), README 엑셀 연결주소 실제값 확정. Actions 수동 실행 결과: MTA Flint 6건 성공, **OCTA는 접속 성공(사내망 문제 아니었음)했으나 실제 페이지에 공고 링크 없음+이전된 신규 시스템(OpenGov)이 Cloudflare 봇차단** → §2 판정표 "403/봇차단→제외" 케이스로 최종 확정. collect.py COLLECTORS에서 OCTA 제거(파일은 조사기록으로 보존), README §2/§5 갱신 |
 
 ## 지침 (PATCH_ORDER_M9_0에서 발췌)
 
