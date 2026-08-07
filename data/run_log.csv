@@ -3,3 +3,5 @@
 2026-08-06 14:10:12,OCTA,실패,0,"ConnectTimeout: HTTPSConnectionPool(host='cammnet.octa.net', port=443): Max retries exceeded with url: /procurements (Caused by ConnectTimeoutError(<HTTPSConnection(host='cammnet.octa.net', port=443) at 0x179f14be0d0>, 'Connection to cammnet.octa.net timed out. (connect timeout=30)'))"
 2026-08-06 14:12:12,MTA Flint,성공,6,
 2026-08-06 14:12:33,OCTA,실패,0,"ConnectTimeout: HTTPSConnectionPool(host='cammnet.octa.net', port=443): Max retries exceeded with url: /procurements (Caused by ConnectTimeoutError(<HTTPSConnection(host='cammnet.octa.net', port=443) at 0x207669641a0>, 'Connection to cammnet.octa.net timed out. (connect timeout=30)'))"
+2026-08-07 00:44:33,MTA Flint,성공,6,
+2026-08-07 00:44:33,OCTA,성공,0,

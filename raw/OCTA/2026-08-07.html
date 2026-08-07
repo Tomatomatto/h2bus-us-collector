@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <!-- For compatibiliity with Google calendar must use IE9 or later compatibility mode -->
+    <!-- For compatibiliity with Future Procurments Edit calendar selection IE8 or later compatibility mode -->	
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>CAMMNET | Open Procurements at OCTA</title>
+
+
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/Default.aspx?nojs=true" />
+    </noscript>
+    <meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="target-densitydpi=high-dpi" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta http-equiv="cleartype" content="on" />
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui-1.9.1/js/jquery-ui-1.9.1.custom.min.js"></script>
+    <script type="text/javascript" src="/js/preloader.js"></script>
+    <script type="text/javascript" src="/js/chosen.jquery.js"></script>
+    <script type="text/javascript" src="/js/tinyscrollbar/js/jquery.tinyscrollbar.min.js"></script>
+    <script type="text/javascript" src="/js/overlay/overlay.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.cycle.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <!-- JTF -->
+    <script type="text/javascript" src="/js/shadowbox/shadowbox.js"></script>
+    <!--[if IE]>
+        <script type="text/javascript" src="/js/ie-script.js"></script>
+    <![endif]-->
+    
+    <script type="text/javascript" src="/js/procurements.js"></script>
+<link href="/css/chosen.css" rel="stylesheet" type="text/css" /><link href="/js/jquery-ui-1.9.1/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet" type="text/css" /><link href="/css/style.css" rel="stylesheet" type="text/css" /><link href="/css/interior.css" rel="stylesheet" type="text/css" />
+    <!-- JTF -->
+    <link rel="stylesheet" type="text/css" href="/js/shadowbox/shadowbox.css" />
+    <!--[if IE]>
+        <script type="text/javascript" src="/js/jquery.corner.js"></script>
+	    <link href="/css/ie-style.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/css/print.css" type="text/css" media="print" /><title>
+
+</title></head>
+<body class="interiorpage">
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-41260699-1', 'octa.net');
+        ga('send', 'pageview');
+
+		function track(someurl)
+		{
+		   ga('send', 'pageview', 
+			{
+			'page': someurl,
+			'title': ''
+			});
+		}			
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/Default.aspx?nojs=true">
+    </noscript>
+    <div style="display: none;" id="bodyClass">
+        
+    openProcurements
+    </div>
+    <div id="PageWrapper" style="zoom: 100%;">
+        <div id="MenuContainer">
+            <div id="MenuTopContainer">
+                <div id="menubar-top" class="menucontainers">
+                    <a href="/">
+                        <img alt="CAMMNET Logo" id="logo" src="/images/site-logo.png" /></a>
+                    <div id="navTop">
+                        <!--<div id="accArrows">
+                            <img src="/images/spacer.gif" id="upArrow" class="upArrow" />
+                            <img src="/images/spacer.gif" id="downArrow" class="downArrow" />
+                        </div>
+                        <img src="/images/spacer.gif" id="Aa-btn" alt="Aa" class="top-menu-btns" />-->
+                        <table style="background: url('/images/Aa.png'); float: left; margin-left: -4px;
+                            margin-top: 0px;" height="67" width="91">
+                            <tr>
+                                <td>
+                                    <img style="width: 80px; height: 24px;" src="/images/spacer.gif" class="upArrow" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img style="width: 80px; height: 24px;" src="/images/spacer.gif" class="downArrow" />
+                                </td>
+                            </tr>
+                        </table>
+                        <img src="/images/spacer.gif" id="login-btn" alt="login" class="login-btn top-menu-btns" />
+                        <a href="/register">
+                            <img src="/images/spacer.gif" id="register-btn" alt="register" class="register-btn top-menu-btns" /></a>
+                        <div id="search-box">
+                            <div id="search-box-content">
+                                <form action="/search/Default.aspx" method="GET" id="search-form-bar">
+                                <input type="text" name="q" class="input" value="Search" />
+                                <input type="submit" class="go-btn" value=" " />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="MenuBottomContainer">
+                <div id="menubar-bottom" class="menucontainers">
+                    <a href="/" id="home-btn">
+                        <img src="/images/spacer.gif" height="38px" width="89px" class="nav-img" alt="Home" /></a>
+                    <a href="/procurements" id="procurements-btn">
+                        <img src="/images/spacer.gif" height="38px" width="149px" class="nav-img" alt="Procurements" /></a>
+                    <a href="/procurements/online" id="online-pro-btn">
+                        <img src="/images/spacer.gif" height="38px" width="194px" class="nav-img" alt="Online Procurements" /></a>
+                    <a href="/awards" id="awards-btn">
+                        <img src="/images/spacer.gif" height="38px" width="104px" class="nav-img" alt="Awards" /></a>
+                    <a href="/about-us/working" id="working-with-btn">
+                        <img src="/images/spacer.gif" height="38px" width="177px" class="nav-img" alt="Working with OCTA" /></a>
+                    <a href="/dbe-accordion" id="dbe-btn">
+                        <img src="/images/spacer.gif" height="38px" width="140px" class="nav-img" alt="DBE Program" /></a>
+                    <a href="/contact-accordion" id="contact-us-btn">
+                        <img src="/images/spacer.gif" height="38px" width="127px" class="nav-img" alt="Contact Us" /></a>
+                </div>
+            </div>
+        </div>
+        <div id="InteriorPageContainer">
+            <div id="PageContent">
+                <div id="MainContent">
+                    <div id="leftSideBar">
+                        
+    <img src="/images/interior/open_procurements-left.jpg" style="margin-top: 0px; margin-left: -2px;
+        margin-bottom: -6px;" alt="Open Procurements" />
+    <p>
+        Listed to the right are OCTA’s open procurements. To view more specific procurement
+        detail concerning a solicitation, click on any underlined text related to the Solicitation
+        you want to view.</p>
+    <img src="/images/relatedinfo.jpg" style="margin-left: -1px; margin-top: 41px;" alt="Related Information" />
+    <p>
+        Interested in online business networking? Visit OCTA's <a href='https://www.facebook.com/CammnetConnect/info'>
+            Cammnet Connect</a> Facebook page to network with other firms. Cammnet Connect
+        assists firms in connecting with other firms to form business relationships and
+        partnering opportunities.
+    </p>
+    <p style="margin-top: 19px;">
+        Interested in seeing only the online procurements?
+        <br />
+        <a href="/procurements/online">Click here to view the online procurements that are currently
+            open.</a></p>
+    <p style="margin-top: 19px;">
+        Looking for recently awarded procurements?
+        <br />
+        <a href="/awards">View awards here.</a>
+    </p>
+
+                        <a id="octaLeftLink" class="leftRailLink" href="http://www.octa.net/" target="_blank">
+                            <img style="margin-top: 27px; margin-left: -3px;" src="/images/interior/visitocta.jpg" /></a>
+                        <a id="facebookLeftLink" class="leftRailLink" href="https://www.facebook.com/CammnetConnect/info" target="_blank">
+                            <img class="lsfacebook" style="margin-top: 31px; margin-bottom: 35px; margin-left: -3px;" src="/images/interior/facebook.jpg" /></a> 
+                        <a id="refMaterialsLeftLink" class="leftRailLink" href="/reference-materials/">
+                            <img src="/images/interior/referencematerials.jpg" style="margin-left: -3px; margin-bottom: 25px;" /></a>
+						<a id="responsivenessTrainingLink" class="leftRailLink" href="https://cammnet.octa.net/dbe-accordion/">
+							<img src="/images/interior/icon_sidebar_responsiveness_training.png" style="margin-left: -3px; margin-bottom: 25px;" /></a>
+                        <a class="leftRailLink" href="https://www.octa.net/about/leadership/lossan-agency/overview/" target="_blank">
+                            <img style="margin-top: 5px; margin-left: -3px;" src="/images/interior/lossan_logo.png" /></a><br><br><br>
+                    </div>
+                    <!-- START TASK 082 -->
+                    <div id="rightSideContent">
+                        <span id="featureRating"><div class="feature_rating_container" style="background:url(/images/feature_rating/feature_rating_no_sel.png) 0 0 no-repeat;">  <div class="feature_rating_love"></div>  <div class="feature_rating_improve"></div></div></span>
+                        
+    <form method="post" action="./" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI1Mjk0MTQ5Mw9kFgJmD2QWDAIHDxYCHgdWaXNpYmxlaGQCCw8PFgIeBFRleHQF2QE8ZGl2IGNsYXNzPSJmZWF0dXJlX3JhdGluZ19jb250YWluZXIiIHN0eWxlPSJiYWNrZ3JvdW5kOnVybCgvaW1hZ2VzL2ZlYXR1cmVfcmF0aW5nL2ZlYXR1cmVfcmF0aW5nX25vX3NlbC5wbmcpIDAgMCBuby1yZXBlYXQ7Ij4gIDxkaXYgY2xhc3M9ImZlYXR1cmVfcmF0aW5nX2xvdmUiPjwvZGl2PiAgPGRpdiBjbGFzcz0iZmVhdHVyZV9yYXRpbmdfaW1wcm92ZSI+PC9kaXY+PC9kaXY+ZGQCDQ9kFgICAQ9kFgQCAQ8PFgIfAWVkZAIDDw8WAh8BBQEwZGQCEQ8PFgIfAQVqPGEgaHJlZj0iaHR0cDovL29jdGEubmV0IiB0YXJnZXQ9Il9ibGFuayI+Q29weXJpZ2h0ICZjb3B5OyAyMDI2IE9yYW5nZSBDb3VudHkgVHJhbnNwb3J0YXRpb24gQXV0aG9yaXR5PC9hPmRkAhMPDxYCHwEFejxkaXYgY2xhc3M9ImxvZ2luQ29udGFpbmVyX2xvZ2dpbkVycm9ySW5uZXIiPllvdSBtdXN0IGxvZ2luIHRvIHZpZXcgYSBzb2xpY2l0YXRpb24gb3IgdXBkYXRlIHlvdXIgY29tcGFueSdzIHByb2ZpbGUuPC9kaXY+ZGQCFQ8PFgIfAQUBMGRkZLK3cR43LBp4TzzKrGLHFa3lBC7cDDbvsQ2nKuNqRtQh" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4E7DD227" />
+<!--OpenGov Embed Start-->
+    <div id="opengov-embed-container" style="margin-top: 10px;">
+        <iframe
+            title="OpenGov Online Procurements"
+            src="https://procurement.opengov.com/portal/embed/octa/project-list"
+            style="width: 100%; min-height: 1200px; border: 0;"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+    </div>
+<!--OpenGov Embed End-->
+    <div id="open-procurements-lightbox"  style="display: none;">
+        <table id="openProContainer">
+            <thead>
+                <tr class="head container odd">
+                    <td class="inner solicitation">
+                        <p>
+                            Solicitation</p>
+                        <p>
+                            No#</p>
+                        <div class="arrowContainer" style="margin: 0px;">
+                            <p class="sortArrow" style="margin: 0px 0px 0px 8px;">
+                                <img style="margin-top: 2px" class="arrowDown" alt="sort" src="/images/solit-arrow.png" /><img
+                                    style="margin-top: 2px" alt="sort" class="arrowUp" src="/images/solit-arrow-up.png" /></p>
+                        </div>
+                    </td>
+                    <td class="inner titleBox">
+                        Title<div class="arrowContainer" style="margin: 0px;">
+                            <p class="sortArrow" style="margin: 0px 0px 0px 2px;">
+                                <img style="margin-top: 2px" class="arrowDown" alt="sort" src="/images/solit-arrow.png" /><img
+                                    style="margin-top: 2px" alt="sort" class="arrowUp" src="/images/solit-arrow-up.png" /></p>
+                        </div>
+                    </td>
+                    <td class="inner dateBox">
+                        Date Posted<div class="arrowContainer" style="margin: 0px;">
+                            <p class="sortArrow" style="margin: 0px 0px 0px 0px;">
+                                <img style="margin-top: 2px" class="arrowDown" alt="sort" src="/images/solit-arrow.png" /><img
+                                    style="margin-top: 2px" alt="sort" class="arrowUp" src="/images/solit-arrow-up.png" /></p>
+                        </div>
+                    </td>
+                    <td class="inner closingDateBox">
+                        Closing Date<div class="arrowContainer" style="margin: 0px;">
+                            <p class="sortArrow" style="margin: 0px 0px 0px 0px;">
+                                <img style="margin-top: 2px" class="arrowDown" alt="sort" src="/images/solit-arrow.png" /><img
+                                    style="margin-top: 2px" alt="sort" class="arrowUp" src="/images/solit-arrow-up.png" /></p>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <span id="interiorRightSideContent_proLabel"></span>
+            </tbody>
+        </table>
+        <div class="info" style="text-align: center; color: #666666; margin-top: 10px; margin-bottom: 0px;
+            height: 30px; font-size: 12px; font-weight: bold;">
+            Showing
+            <span id="interiorRightSideContent_itemCount">0</span>
+            Items</div>
+    </div>
+	
+    <!-- OpenGov Procurement Portal Link -->
+    <div id="opengov-portal-container" style="margin-top: 30px; width: 85%; text-align: center; padding: 40px; background: #f5f5f5; border-radius: 8px; display: none;">
+        <h3 style="color: #294B75; margin-bottom: 15px;">View Current Procurements on OpenGov</h3>
+        <p style="margin-bottom: 20px; color: #666;">OCTA's procurement opportunities are now available on the OpenGov platform.</p>
+        <a href="https://procurement.opengov.com/portal/octa" 
+           target="_blank" 
+           style="display: inline-block; background: #294B75; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+            View Procurements on OpenGov →
+        </a>
+    </div>	
+	
+    <div id="dbProcurementsTable" style="display: block;">
+    </div>
+    </form>
+
+                    </div>
+                    <div id="ratingFeedbackWrapper">
+                        <div id="ratingFeedbackClose">[X]</div>
+                        <div id="ratingFeedbackText">Please enter your feedback below:</div>
+                        <textarea name="ctl00$ratingFeedbackInput" id="ratingFeedbackInput" rows="3" cols="30" maxlength="300" placeholder="Optional, 300 characters max"></textarea>
+                        <div id="ratingFeedbackButton">Submit</div>
+                        <div id="ratingFeedbackConfirmation">Thank you for your feedback!</div>
+                    </div>
+                    <!-- END TASK 082 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="PreFooterContainer">
+        <div id="prefooter-content">
+            <a href="mailto:cammadmin@octa.net">
+                <img src="/images/interior/questions.jpg" /></a>
+        </div>
+    </div>
+    <div id="FooterContainer">
+        <div id="footer-content">
+            <div id="octa-footer-logo">
+                <a href="https://cammnet.octa.net">
+                    <img src="/images/footer-logo.png" alt="Footer Logo" /></a>
+            </div>
+            <div id="footer-nav">
+                <ul>
+                    <li><a href="http://octa.net" target="_blank">OCTA.net</a></li>
+                    <li class="divider">|</li>
+		    <li><a href="https://www.octa.net/about/about-octa/overview/" target="_blank">About Us</a></li>
+		    <li class="divider">|</li>
+                    <li><a href="/terms/conditions/">Terms &amp; Conditions</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="/reference-materials">Reference Materials</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="/contact-accordion">Contact</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="mailto:cammadmin@octa.net">Support</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="/sitemap/">Sitemap</a></li>
+                </ul>
+            </div>
+            <div id="footer-copyright">
+                <ul>
+                    <li><span id="copyrightContent"><a href="http://octa.net" target="_blank">Copyright &copy; 2026 Orange County Transportation Authority</a></span></li>
+                    <li class="divider">|</li>
+                    <li><a href="/privacy">Privacy Statement</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="/terms">Terms of Use</a></li>
+                    <li class="divider">|</li>
+                    <li><a class="trinet" href="https://trinetsolutions.com" target="_blank">Website Design
+                        by Trinet Internet Solutions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="loginContainer">
+        <!--[if IE]>
+            <img src="/images/corners/procorner-top.png" class="topbimg"/>
+        <![endif]-->
+        <div id="login-lightbox">
+            <div class="login-top">
+                <div id="register-msg">
+                    <span id="logginError"><div class="loginContainer_logginErrorInner">You must login to view a solicitation or update your company's profile.</div></span>
+                </div>
+                <div id="close-btn">
+                    <img src="/images/login/close-btn.jpg" />
+                </div>
+            </div>
+            <div class="login-bottom">
+                <div id="register-box">
+                    <img src="/images/login/register-img.jpg" />
+                    <p>
+                        If your company has never registered on
+                        <br />
+                        CAMM NET, click the button below.
+                    </p>
+                    <a href="/register">
+                        <img src="/images/login/signup.jpg" alt="Register" /></a>
+                </div>
+                <div id="login-divider">
+                    &nbsp;
+                </div>
+                <div id="login-box">
+                    <img src="/images/login/login-img.jpg" />
+				    <!-- START ref #41 -->
+                    <form id="login-form" action="/login.aspx" method="post">
+                        <!-- END ref #41 -->
+                        <div class="uname">
+                            <input type="text" class="uname" name="uname" value="Email" /></div>
+                        <div class="pword">
+                            <input type="password" class="pword" name="password" value="Password" /></div>
+                        <input type="hidden" name="currentURL" id="currentURL" value="/" />
+                        <input type="submit" onclick="track('/login_success_psuedo_page/' + window.location.pathname);" class="login-btn2" value="&nbsp;" />
+                    </form>
+                    <br />
+                    <a href="/recover" style="text-decoration: none;">Forgot Login?</a><br />
+                    <a href="/unsubscribe" style="text-decoration: none;">Unsubscribe</a> / <a href="/resubscribe" style="text-decoration: none;">Resubscribe</a>
+                </div>
+            </div>
+        </div>
+        <!--[if IE]>
+            <img src="/images/corners/procorner-bottom.png" class="bottombimg" />
+        <![endif]-->
+    </div>
+    <div id="imagePreload">
+        <img src="/images/dbe-btn-hover.png" alt="preload" />
+        <img src="/images/working-with-btn-hover.png" alt="preload" />
+        <img src="/images/awards-btn-hover.png" alt="preload" />
+        <img src="/images/online-pro-btn-hover.png" alt="preload" />
+        <img src="/images/procurements-btn-hover.jpg" alt="preload" />
+        <img src="/images/home-btn-hover.png" alt="preload" />
+        <img src="/images/contact-us-btn-hover.jpg" alt="preload" />
+        <img src="/images/login-btn-hover.png" alt="preload" />
+        <img src="/images/register-btn-hover.png" alt="preload" />
+        <img src="/images/dropup.png" alt="preload" />
+    </div>
+    <span id="zoomLevel">0</span>
+    <div id="give-feedback">
+        <div id="click-here-survey"></div>
+    </div>
+    <!-- START ref #41 -->
+    <span id="localJS"></span>
+    <!-- END ref #41 -->
+</body>
+</html>
