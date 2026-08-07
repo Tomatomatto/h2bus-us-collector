@@ -8,11 +8,8 @@
 
 ## 1. 엑셀 연결 주소
 
-> **[TODO] 이 저장소를 GitHub에 생성/푸시한 뒤 아래 `{GITHUB_ACCOUNT}/{REPO_NAME}` 부분을
-> 실제 계정·저장소 이름으로 교체하십시오.** 현재 값은 아직 실제 주소가 아닙니다.
-
 ```
-https://raw.githubusercontent.com/{GITHUB_ACCOUNT}/{REPO_NAME}/main/data/notices.csv
+https://raw.githubusercontent.com/Tomatomatto/h2bus-us-collector/main/data/notices.csv
 ```
 
 엑셀에서: 데이터 탭 → 데이터 가져오기 → 웹에서 → 위 주소 붙여넣기 → 연결.
